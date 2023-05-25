@@ -1,0 +1,54 @@
+<div>
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Budget</th>
+            <th>Remaining</th>
+        </tr>
+        <tr>
+            <td>Housing</td>
+            <td>{{housing}}</td>
+            <td>{{housingRemaining}}</td>
+        </tr>
+        <tr>
+            <td>Food</td>
+            <td>{{food}}</td>
+            <td>{{foodRemaining}}</td>
+        </tr>
+        <tr>
+            <td>Transportation</td>
+            <td>{{transportation}}</td>
+            <td>{{transportationRemaining}}</td>
+        </tr>
+        <tr>
+            <td>Utilities</td>
+            <td>{{utilities}}</td>
+            <td>{{utilitiesRemaining}}</td>
+        </tr>
+    </table>
+    <form>
+        <p>Set your expenses by selecting a category from the dropdown, entering the expenditure amount, and clicking "submit"</p>
+        <p>
+            Category:
+            <select [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
+                <option>housing</option>
+                <option>food</option>
+                <option>utilities</option>
+                <option>transportation</option>
+            </select>
+        </p>
+        <p>
+            Amount: 
+            <input type="text" [(ngModel)]="amount" [ngModelOptions]="{standalone: true}" />
+        </p>
+        <p>
+            <button (click)="submit($event)">Submit</button>
+        </p>
+    </form>
+    <h3>Expenditures</h3>
+    <ul>
+        <li *ngFor="let expense of expendituresList">
+            Name: {{expense.name}}, Amount: ${{expense.amount}}
+        </li>
+    </ul>
+</div>
